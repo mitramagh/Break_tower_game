@@ -1,0 +1,37 @@
+def tower_breakers(n, m):
+    """
+    Determines the winner of the Tower Breakers game.
+
+    Parameters:
+    n (int): The number of towers.
+    m (int): The initial height of each tower.
+
+    Returns:
+    int: 1 if the first player wins, 2 if the second player wins.
+    """
+
+    # If the initial height of the towers is 1, P1 can't make a move, so P2 wins.
+    if m == 1:
+        return 2
+
+    # If the number of towers is even, P2 can mirror P1's moves and win. Otherwise, P1 wins.
+    return 1 if n % 2 == 1 else 2
+
+
+# Start the game
+if __name__ == "__main__":
+    n = int(input("Enter the number of towers: "))
+    m = int(input("Enter the initial height of the towers: "))
+    winner = tower_breakers(n, m)
+    print(f"The winner is: Player {winner}")
+
+
+
+"""
+break_tower_optimalStrategy
+Game Strategy: The key to this game is understanding the optimal strategy. If the number of towers is even, the second player can always mirror the first player's moves, leading to their victory. If the number of towers is odd, the first player can always ensure victory by effectively controlling the parity of the moves.
+
+Special Case (m == 1): If the height of the towers is initially 1, the first player can't make a move (as they can't reduce the height to any positive number), so the second player automatically wins.
+
+Determining the Winner: Based on the number of towers and their height, the winner is decided without simulating all the moves, as the optimal strategies lead to a deterministic outcome. If the number of towers is even, the second player wins. Otherwise, the first player wins.
+"""
